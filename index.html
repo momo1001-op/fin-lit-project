@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financial Literacy 10 Final</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 20px;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    h2 {
+      color: #005b96;
+      margin-top: 30px;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+    button {
+      margin-top: 5px;
+      padding: 8px 12px;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005a99;
+    }
+  </style>
+</head>
+<body>
+  <h1>Financial Literacy 10 - Final Reflections</h1>
+
+  <div id="content"></div>
+
+  <script>
+    const prompts = [
+      {
+        title: "FL10.1 – Personal Financial Values Reflection",
+        question: "Reflect on your values, background, and experiences. How do these factors shape the way you make financial decisions? Are there specific beliefs or cultural practices that influence how you save, spend, or invest?"
+      },
+      {
+        title: "FL10.2 – Well-being and Financial Health",
+        question: "Describe the ways in which finances can impact mental, physical, and emotional well-being. What strategies could you use to manage stress related to financial issues and support your overall well-being?"
+      },
+      {
+        title: "FL10.3 – Financial Institution Comparison",
+        question: "Choose two financial institutions. Compare their services, products, and any unique features. Which would best meet your needs, and why?"
+      },
+      {
+        title: "FL10.4 – Income Exploration",
+        question: "Identify 3 ways to earn an income that interests you. One that you can start tomorrow and two potential career options. Describe the potential benefits and challenges of each option."
+      },
+      {
+        title: "FL10.5 – Budgeting Exercise",
+        question: "Create a budget based on a fictional scenario (e.g., living on your own with a part-time job). How will you allocate your money to cover essentials, savings, and leisure?"
+      },
+      {
+        title: "FL10.6 – Savings Strategy",
+        question: "Outline a savings strategy. What are your short- and long-term savings goals? How much do you plan to save monthly, and why is it important to have a savings mindset?"
+      },
+      {
+        title: "FL10.7 – Investment Options Overview",
+        question: "Research two investment options. Explain the risks and potential returns. Which option would you choose, and how could it fit into a personal financial plan?"
+      },
+      {
+        title: "FL10.8 – Credit and Responsible Borrowing",
+        question: "Identify two types of credit. What are the benefits and risks of each? How can you ensure responsible borrowing and avoid high-interest debt?"
+      },
+      {
+        title: "FL10.9 – Financial and Personal Information Security",
+        question: "Discuss methods to protect your personal and financial information. What are the risks of not securing your data, and how will you safeguard your accounts and digital identity?"
+      },
+      {
+        title: "FL10.10 – Future Aspirations Plan",
+        question: "Create a plan for your future, including your career, education, and wellness goals. How will you financially support these goals?"
+      }
+    ];
+
+    const container = document.getElementById("content");
+
+    prompts.forEach((item, index) => {
+      const section = document.createElement("section");
+      const title = document.createElement("h2");
+      const question = document.createElement("p");
+      const textarea = document.createElement("textarea");
+      const button = document.createElement("button");
+
+      title.textContent = item.title;
+      question.textContent = item.question;
+      textarea.id = `response-${index}`;
+      button.textContent = "Save Response";
+      button.onclick = () => {
+        localStorage.setItem(`FL10-response-${index}`, textarea.value);
+        alert("Response saved!");
+      };
+
+      textarea.value = localStorage.getItem(`FL10-response-${index}`) || "";
+
+      section.appendChild(title);
+      section.appendChild(question);
+      section.appendChild(textarea);
+      section.appendChild(button);
+
+      container.appendChild(section);
+    });
+  </script>
+</body>
+</html>
